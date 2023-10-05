@@ -12,6 +12,7 @@ public class Prefs {
     public static final String PREFS_FILENAME = "prefs.json";
     public static final String DB_URL = "dbUrl";
     public static final String INIT_DB_SQL_FILE_PATH = "initDbSql";
+    public static final String POPULATE_DB_SQL_PATH = "populateDbSql";
     private final Map<String, Object> prefs;
 
     public Prefs() throws IOException {

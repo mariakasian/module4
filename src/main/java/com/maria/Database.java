@@ -4,36 +4,35 @@ import java.io.IOException;
 import java.sql.*;
 
 public class Database {
-    private static final Database INSTANCE;
     private static Connection con;
-
-    static {
-        try {
-            INSTANCE = new Database();
-        } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static final Database INSTANCE = new Database();
 
     public static Database getInstance(){
         return INSTANCE;
     }
 
-    private  Database() throws SQLException, IOException {
-        String conUrl = new Prefs().getString(Prefs.DB_URL);
-        con = DriverManager.getConnection(conUrl);
+    private  Database() {
+        try {
+            String conUrl = new Prefs().getString(Prefs.DB_URL);
+            con = DriverManager.getConnection(conUrl);
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public Connection getConnection() {
-        return con;
+    public static void executeUpdate(String sql) {
+        try (Statement st = con.createStatement()) {
+            st.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static int executeUpdate(String sql) throws SQLException {
-        Statement st = con.createStatement();
-        return st.executeUpdate(sql);
-    }
-
-    public void close() throws SQLException {
-        con.close();
+    public void connectionClose() {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
     }
 }

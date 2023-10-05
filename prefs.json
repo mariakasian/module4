@@ -1,4 +1,5 @@
 {
   "dbUrl": "jdbc:h2:~/DataBases/h2database",
-  "initDbSql": "sql/h2_init_db.sql"
+  "initDbSql": "sql/h2_init_db.sql",
+  "populateDbSql": "sql/h2_populate_db.sql"
 }
