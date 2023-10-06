@@ -16,15 +16,27 @@ public class Database {
             String conUrl = new Prefs().getString(Prefs.DB_URL);
             con = DriverManager.getConnection(conUrl);
         } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            throw new RuntimeException("Can't create connection.");
         }
     }
 
-    public static void executeUpdate(String sql) {
+    public static int executeUpdate(String query) {
         try (Statement st = con.createStatement()) {
-            st.executeUpdate(sql);
+            return st.executeUpdate(query);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            throw new RuntimeException("Can't run query.");
+        }
+    }
+
+    public static ResultSet executeResult(String query) {
+        try {
+            Statement st = con.createStatement();
+            return st.executeQuery(query);
+        } catch (SQLException e) {
+            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            throw new RuntimeException("Can't run query.");
         }
     }
 
@@ -32,6 +44,7 @@ public class Database {
             try {
                 con.close();
             } catch (SQLException e) {
+                System.out.println(String.format("Exception reason: %s", e.getMessage()));
                 throw new RuntimeException(e);
             }
     }

@@ -13,6 +13,11 @@ public class Prefs {
     public static final String DB_URL = "dbUrl";
     public static final String INIT_DB_SQL_FILE_PATH = "initDbSql";
     public static final String POPULATE_DB_SQL_PATH = "populateDbSql";
+    public static final String FIND_MAX_SALARY_WORKER = "findMaxSalaryWorker";
+    public static final String FIND_MAX_PROJECTS_CLIENT = "findMaxProjectsClient";
+    public static final String FIND_LONGEST_PROJECT = "findLongestProject";
+    public static final String FIND_YOUNGEST_ELDEST_WORKERS = "findYoungestEldestWorkers";
+    public static final String PRINT_PROJECT_PRICES = "printProjectPrices";
     private final Map<String, Object> prefs;
 
     public Prefs() throws IOException {

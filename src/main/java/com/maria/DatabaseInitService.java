@@ -8,6 +8,6 @@ public class DatabaseInitService {
     public static void initDb(Database db) throws IOException {
         String initDbFilename = new Prefs().getString(Prefs.INIT_DB_SQL_FILE_PATH);
         String sql = String.join("\n", Files.readAllLines(Paths.get(initDbFilename)));
-        Database.executeUpdate(sql);
+        System.out.println("Initiation done: " + Database.executeUpdate(sql));
     }
 }
