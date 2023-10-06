@@ -29,7 +29,7 @@ public class DatabaseQueryService {
                 maxSalaryWorkersList.add(maxSalaryWorker);
             }
         } catch (SQLException e) {
-            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            System.out.printf("Exception reason: %s%n", e.getMessage());
             throw new RuntimeException("Can't run query");
         }
 
@@ -97,7 +97,7 @@ public class DatabaseQueryService {
                 longestProjectsList.add(longestProject);
             }
         } catch (SQLException e) {
-            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            System.out.printf("Exception reason: %s%n", e.getMessage());
             throw new RuntimeException("Can't run query");
         }
 
@@ -167,7 +167,7 @@ public class DatabaseQueryService {
                 projectPricesList.add(projectPrices);
             }
         } catch (SQLException e) {
-            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            System.out.printf("Exception reason: %s%n", e.getMessage());
             throw new RuntimeException("Can't run query");
         }
 

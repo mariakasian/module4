@@ -16,7 +16,7 @@ public class Database {
             String conUrl = new Prefs().getString(Prefs.DB_URL);
             con = DriverManager.getConnection(conUrl);
         } catch (SQLException | IOException e) {
-            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            System.out.printf("Exception reason: %s%n", e.getMessage());
             throw new RuntimeException("Can't create connection.");
         }
     }
@@ -25,7 +25,7 @@ public class Database {
         try (Statement st = con.createStatement()) {
             return st.executeUpdate(query);
         } catch (SQLException e) {
-            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            System.out.printf("Exception reason: %s%n", e.getMessage());
             throw new RuntimeException("Can't run query.");
         }
     }
@@ -35,7 +35,7 @@ public class Database {
             Statement st = con.createStatement();
             return st.executeQuery(query);
         } catch (SQLException e) {
-            System.out.println(String.format("Exception reason: %s", e.getMessage()));
+            System.out.printf("Exception reason: %s%n", e.getMessage());
             throw new RuntimeException("Can't run query.");
         }
     }
@@ -44,7 +44,7 @@ public class Database {
             try {
                 con.close();
             } catch (SQLException e) {
-                System.out.println(String.format("Exception reason: %s", e.getMessage()));
+                System.out.printf("Exception reason: %s%n", e.getMessage());
                 throw new RuntimeException(e);
             }
     }
