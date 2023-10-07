@@ -18,7 +18,7 @@ public class DatabaseQueryService {
         String findMaxSalaryWorkerDbFilename = new Prefs().getString(Prefs.FIND_MAX_SALARY_WORKER);
         String sql = String.join("\n", Files.readAllLines(Paths.get(findMaxSalaryWorkerDbFilename)));
 
-        try (ResultSet resultSet = Database.executeResult(sql)) {
+        try (ResultSet resultSet = db.executeResult(sql)) {
             while (resultSet.next()) {
                 MaxSalaryWorker maxSalaryWorker = new MaxSalaryWorker();
                 String name = resultSet.getString("wname");
@@ -52,7 +52,7 @@ public class DatabaseQueryService {
         String findMaxProjectsClientDbFilename = new Prefs().getString(Prefs.FIND_MAX_PROJECTS_CLIENT);
         String sql = String.join("\n", Files.readAllLines(Paths.get(findMaxProjectsClientDbFilename)));
 
-        try (ResultSet resultSet = Database.executeResult(sql)) {
+        try (ResultSet resultSet = db.executeResult(sql)) {
             while (resultSet.next()) {
                 MaxProjectCountClient maxProjectCountClient = new MaxProjectCountClient();
                 String name = resultSet.getString("cname");
@@ -86,7 +86,7 @@ public class DatabaseQueryService {
         String findLongestProjectDbFilename = new Prefs().getString(Prefs.FIND_LONGEST_PROJECT);
         String sql = String.join("\n", Files.readAllLines(Paths.get(findLongestProjectDbFilename)));
 
-        try (ResultSet resultSet = Database.executeResult(sql)) {
+        try (ResultSet resultSet = db.executeResult(sql)) {
             while (resultSet.next()) {
                 LongestProject longestProject = new LongestProject();
                 String name = resultSet.getString("pname");
@@ -120,7 +120,7 @@ public class DatabaseQueryService {
         String findYoungestEldestWorkersDbFilename = new Prefs().getString(Prefs.FIND_YOUNGEST_ELDEST_WORKERS);
         String sql = String.join("\n", Files.readAllLines(Paths.get(findYoungestEldestWorkersDbFilename)));
 
-        try (ResultSet resultSet = Database.executeResult(sql)) {
+        try (ResultSet resultSet = db.executeResult(sql)) {
             while (resultSet.next()) {
                 YoungestEldestWorkers youngestEldestWorker = new YoungestEldestWorkers();
                 String type = resultSet.getString("type");
@@ -156,7 +156,7 @@ public class DatabaseQueryService {
         String printProjectPricesDbFilename = new Prefs().getString(Prefs.PRINT_PROJECT_PRICES);
         String sql = String.join("\n", Files.readAllLines(Paths.get(printProjectPricesDbFilename)));
 
-        try (ResultSet resultSet = Database.executeResult(sql)) {
+        try (ResultSet resultSet = db.executeResult(sql)) {
             while (resultSet.next()) {
                 ProjectPrices projectPrices = new ProjectPrices();
                 String name = resultSet.getString("name");

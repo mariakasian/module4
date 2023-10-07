@@ -1,5 +1,5 @@
 {
-  "dbUrl": "jdbc:h2:E:\\GoIT\\JAVA\\HW Dev\\module4\\h2database",
+  "dbUrl": "jdbc:h2:./h2database",
   "initDbSql": "sql/h2_init_db.sql",
   "populateDbSql": "sql/h2_populate_db.sql",
   "findMaxSalaryWorker": "sql/h2_find_max_salary_worker.sql",
