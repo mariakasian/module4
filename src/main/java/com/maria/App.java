@@ -2,18 +2,23 @@ package com.maria;
 
 import java.io.IOException;
 
+import static com.maria.DatabaseInitService.initDb;
+import static com.maria.DatabasePopulateService.populateDb;
+import static com.maria.DatabaseQueryService.*;
+
+
 public class App {
     public static void main(String[] args) throws IOException {
         Database db = Database.getInstance();
 
-        new DatabaseInitService().initDb(db);
-        DatabasePopulateService.populateDb(db);
+        initDb(db);
+        populateDb(db);
 
-        new DatabaseQueryService().findMaxSalaryWorker(db);
-        new DatabaseQueryService().findMaxProjectsClient(db);
-        new DatabaseQueryService().findLongestProject(db);
-        new DatabaseQueryService().findYoungestEldestWorkers(db);
-        new DatabaseQueryService().printProjectPrices(db);
+        findMaxSalaryWorker(db);
+        findMaxProjectsClient(db);
+        findLongestProject(db);
+        findYoungestEldestWorkers(db);
+        printProjectPrices(db);
 
         db.connectionClose();
     }
